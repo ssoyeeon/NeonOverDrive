@@ -16,6 +16,9 @@ namespace KartGame.UI
         // 카트 컨트롤러 참조
         public ArcadeKart KartController;
 
+        public float GameTime = 0;
+        public TextMeshProUGUI TimeText;
+
         // 시작 시 초기화
         void Start()
         {
@@ -36,6 +39,8 @@ namespace KartGame.UI
         // 매 프레임마다 업데이트
         void Update()
         {
+            GameTime += Time.deltaTime;
+            TimeText.text = GameTime.ToString();
             // 카트의 현재 속도 계산
             float speed = KartController.Rigidbody.velocity.magnitude;
 

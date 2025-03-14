@@ -150,14 +150,14 @@ RectTransform:
   m_GameObject: {fileID: 54012753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 26.852, y: 15.671, z: 1}
+  m_LocalScale: {x: 32.07471, y: 18.71901, z: 1.1945}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2050754553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -80}
+  m_AnchoredPosition: {x: -506, y: 250}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54012755
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 362174a127c469847879c63b9b4d9c40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -595,7 +595,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 363658375}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: StartButton
+        m_MethodName: MapButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -14,4 +14,8 @@ public class Button : MonoBehaviour
     {
         Application.Quit();
     }
+    public void MapButton()
+    {
+        SceneManager.LoadScene("MapScene");
+    }
 }

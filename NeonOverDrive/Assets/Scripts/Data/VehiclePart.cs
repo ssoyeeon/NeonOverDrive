@@ -6,7 +6,7 @@ using UnityEngine;
 public class VehiclePart : ScriptableObject
 {
     [Header("기본 정보")]
-    public int partID;
+    public int partId;
     public string partName;
     public PartType partType;
     public Sprite icon;

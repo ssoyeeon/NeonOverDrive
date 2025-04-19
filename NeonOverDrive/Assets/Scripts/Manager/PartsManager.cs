@@ -20,7 +20,7 @@ public class PartsManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //모든 부품 로드
-        //LoadAllParts();
+        LoadAllParts();
     }
 
     public VehiclePart GetPart(int partId)

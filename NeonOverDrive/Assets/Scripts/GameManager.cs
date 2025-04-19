@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
+
+    
     public int money;       //총 내 돈
     public bool isEnd;      //끝났는지
     public int reward;      //보상
@@ -11,8 +15,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isEnd = false;
+        if (gameObject == null) Debug.LogError("Null GameManager");
+        else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-        if (gameObject == null) Debug.LogError("게임 매니저 업대오");
     }
 
     // Update is called once per frame
@@ -22,5 +27,15 @@ public class GameManager : MonoBehaviour
         {
             money += reward;
         }
+    }
+
+    public enum GameState
+    {
+        Main,
+        StageSelect,
+        Garage,
+        Racing,
+        StageComplete,
+        GameOver
     }
 }

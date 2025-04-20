@@ -19,16 +19,16 @@ public class VehicleController : MonoBehaviour
     public GameObject wheelDamageEffect;
     public GameObject mirrorDamageEffect;
 
-    private ArcadeKart kart;
-    private VehicleStats baseStats;
+    public ArcadeKart kart;
+    public VehicleStats baseStats;
     private Dictionary<PartType, GameObject> partModels = new Dictionary<PartType, GameObject>();
 
     void Start()
     {
         kart = GetComponent<ArcadeKart>();
 
-        //차량 데이터 설정 (선택된 차량 데이터 가져오기) - > 안되는거잖아 이게ㅠ ㅠㅠ  
-        //vehicleData = GameManager.Instance.PlayerData.GetCurrentVehicle();
+        //차량 데이터 설정 (선택된 차량 데이터 가져오기) - > 안되는거같아 이게... .. ..  
+        vehicleData = GameManager.Instance.playerData.GetCurrentVehicle();
 
         ApplyVehicleParts();
 
@@ -44,32 +44,73 @@ public class VehicleController : MonoBehaviour
     {
         ClearPartModels();
 
-        //baseStats = ScriptableObject.CreateInstance<VehicleStats>();
-
-        ApplyPartModel(PartType.Body, vehicleData.bodyId, bodyModelParent);
-        
-        ApplyPartModel(PartType.Engine, vehicleData.engineId, engineMadeParent);
-
-        for(int i = 0; i < wheelModelParents.Length; i++)
+        // baseStats 초기화
+        baseStats = ScriptableObject.CreateInstance<VehicleStats>();
+        if (baseStats == null)
         {
-            ApplyPartModel(PartType.Wheel, vehicleData.wheelId, wheelModelParents[i], true);
+            Debug.LogWarning("VehicleStats 생성 실패. 기본값을 사용합니다.");
+            baseStats = ScriptableObject.CreateInstance<VehicleStats>();
+            // 기본값 직접 설정
+            baseStats.topSpeed = 180f;
+            baseStats.acceleration = 8f;
+            baseStats.handling = 5f;
+            baseStats.braking = 8f;
         }
-        for (int i = 0; i < wheelModelParents.Length; i++)
+
+        // vehicleData가 null인지 확인
+        if (vehicleData == null)
         {
-            ApplyPartModel(PartType.Mirror, vehicleData.mirrorId, mirrorModelParents[i], true);
+            Debug.LogWarning("vehicleData가 null입니다. 기본 차량 데이터를 사용합니다.");
+            vehicleData = new PlayerVehicleData();
         }
+
+        // 부모 Transform 확인
+        if (bodyModelParent != null)
+            ApplyPartModel(PartType.Body, vehicleData.bodyId, bodyModelParent);
+        else
+            Debug.LogWarning("bodyModelParent가 할당되지 않았습니다.");
+
+        if (engineMadeParent != null)
+            ApplyPartModel(PartType.Engine, vehicleData.engineId, engineMadeParent);
+        else
+            Debug.LogWarning("engineMadeParent가 할당되지 않았습니다.");
+
+        // 휠 적용
+        if (wheelModelParents != null && wheelModelParents.Length > 0)
+        {
+            for (int i = 0; i < wheelModelParents.Length; i++)
+            {
+                if (wheelModelParents[i] != null)
+                    ApplyPartModel(PartType.Wheel, vehicleData.wheelId, wheelModelParents[i], true);
+            }
+        }
+        else
+            Debug.LogWarning("wheelModelParents가 할당되지 않았습니다.");
+
+        // 미러 적용
+        if (mirrorModelParents != null && mirrorModelParents.Length > 0)
+        {
+            for (int i = 0; i < mirrorModelParents.Length; i++)
+            {
+                if (mirrorModelParents[i] != null)
+                    ApplyPartModel(PartType.Mirror, vehicleData.mirrorId, mirrorModelParents[i], true);
+            }
+        }
+        else
+            Debug.LogWarning("mirrorModelParents가 할당되지 않았습니다.");
+
+        // 카트 스탯 업데이트
         UpdateKartStats();
-
     }
 
     void ApplyPartModel(PartType type, int partId, Transform parent, bool isChild = false)
     {
         VehiclePart part = PartsManager.Instance.GetPart(partId);
-        if(part != null && part.partModel != null)
+        if (part != null && part.partModel != null)
         {
             GameObject model = Instantiate(part.partModel, parent);
 
-            if(!isChild)
+            if (!isChild)
             {
                 model.transform.localPosition = Vector3.zero;
                 model.transform.localRotation = Quaternion.identity;
@@ -87,7 +128,7 @@ public class VehicleController : MonoBehaviour
 
     void ClearPartModels()
     {
-        foreach(var model in partModels.Values)
+        foreach (var model in partModels.Values)
         {
             if (model != null)
                 Destroy(model);
@@ -118,7 +159,7 @@ public class VehicleController : MonoBehaviour
     //손상 시각 효과 업데이트
     void UpdateDamageVisuals()
     {
-        for(int i = 0; i < bodyDamageEffects.Length; i++)
+        for (int i = 0; i < bodyDamageEffects.Length; i++)
         {
             float damageThreshold = (i + 1) * (100f / bodyDamageEffects.Length);
             bodyDamageEffects[i].SetActive(vehicleData.bodyDamage >= damageThreshold);
@@ -138,7 +179,7 @@ public class VehicleController : MonoBehaviour
     //충돌 시 손상 적용
     public void ApplyCollisitionDamage(PartType partType, float damageAmount)
     {
-        switch(partType)
+        switch (partType)
         {
             case PartType.Body:
                 vehicleData.bodyDamage = Mathf.Min(vehicleData.bodyDamage + damageAmount, 100f);
@@ -155,32 +196,21 @@ public class VehicleController : MonoBehaviour
         }
     }
 
-    //모든 손상 수리
-    //public void RepairAllDamage()
-    //{
-    //    vehicleData.bodyDamage = 0f;
-    //    vehicleData.engineDamage = 0f;
-    //    vehicleData.wheelDamage = 0f;
-    //    vehicleData.mirrorDamage = 0f;
-    //}    
-
-    //특정 부품만 수리 
-    //public void RepairPart(PartType partType)
-    //{
-    //    switch (partType)
-    //    {
-    //        case PartType.Body:
-    //            vehicleData.bodyDamage = 0f;
-    //            break;
-    //        case PartType.Engine:
-    //            vehicleData.engineDamage = 0f;
-    //            break;
-    //        case PartType.Wheel:
-    //            vehicleData.wheelDamage = 0f;
-    //            break;
-    //        case PartType.Mirror:
-    //            vehicleData.mirrorDamage = 0f;
-    //            break;
-    //    }
-    //}
+    // 추가: 부품별 손상 상태 조회 메서드
+    public float GetPartDamage(PartType partType)
+    {
+        switch (partType)
+        {
+            case PartType.Body:
+                return vehicleData.bodyDamage;
+            case PartType.Engine:
+                return vehicleData.engineDamage;
+            case PartType.Wheel:
+                return vehicleData.wheelDamage;
+            case PartType.Mirror:
+                return vehicleData.mirrorDamage;
+            default:
+                return 0f;
+        }
+    }
 }

@@ -3543,6 +3543,82 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71baf848e76aefd4e9d729d470d2081a, type: 3}
+--- !u!1 &682263667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682263669}
+  - component: {fileID: 682263668}
+  - component: {fileID: 682263670}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &682263668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682263667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c97e227c445634a842e9be3415197d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 682263670}
+  money: 0
+  isEnd: 0
+  reward: 0
+--- !u!4 &682263669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682263667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -37.97593, y: 0.3219195, z: -117.47044}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &682263670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682263667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba156a9e8b107f4cb85eca971be7540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: 0
+  currentVehicleId: 0
+  vehicles:
+  - vehicleId: 0
+    bodyId: 0
+    engineId: 0
+    wheelId: 0
+    mirrorId: 0
+    bodyDamage: 0
+    engineDamage: 0
+    wheelDamage: 0
+    mirrorDamage: 0
+    paintColor: {r: 1, g: 0, b: 0, a: 1}
+    paintPatterenId: 0
+  ownedParts: 
 --- !u!4 &687494953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4290fe0579b63f4429763c6c6d2f242d,
@@ -6677,7 +6753,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1093498919}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5223821195562650278, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1837591727}
+    - targetCorrespondingSourceObject: {fileID: 5223821195562650278, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1837591731}
   m_SourcePrefab: {fileID: 100100000, guid: fef51534630616b4db5fda177f79708c, type: 3}
 --- !u!114 &1401561991 stripped
 MonoBehaviour:
@@ -6685,7 +6769,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1401561990}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1837591725}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b2e8893a3093437d9d101b53db56941, type: 3}
@@ -8895,6 +8979,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1819343609}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1837591725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5223821195562650278, guid: fef51534630616b4db5fda177f79708c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1401561990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1837591727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837591725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3306a87f33e76de49bfa818c7ca1e152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCollisitionForce: 5
+  maxCollisitionForce: 50
+  damageMultiplier: 1
+  frontAngle: 45
+  rearAngle: 45
+  showDebugLogs: 1
+--- !u!114 &1837591731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837591725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff835526f9b39d42ba6252e5cd4af42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleData:
+    vehicleId: 0
+    bodyId: 0
+    engineId: 0
+    wheelId: 0
+    mirrorId: 0
+    bodyDamage: 0
+    engineDamage: 0
+    wheelDamage: 0
+    mirrorDamage: 0
+    paintColor: {r: 1, g: 0, b: 0, a: 1}
+    paintPatterenId: 0
+  bodyModelParent: {fileID: 0}
+  engineMadeParent: {fileID: 0}
+  wheelModelParents: []
+  mirrorModelParents: []
+  bodyDamageEffects: []
+  engineDamageEffect: {fileID: 0}
+  wheelDamageEffect: {fileID: 0}
+  mirrorDamageEffect: {fileID: 0}
+  kart: {fileID: 0}
+  baseStats: {fileID: 11400000, guid: 2c265f6bc0944af4c87f3b65e371cd63, type: 2}
 --- !u!1001 &1839259828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10571,3 +10713,4 @@ SceneRoots:
   - {fileID: 15448417}
   - {fileID: 992330922}
   - {fileID: 135720865}
+  - {fileID: 682263669}

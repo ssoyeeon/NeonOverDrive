@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Vehicle Stats", menuName = "Racing Game/Vehicle Stat")]
-public class VehicleStats : MonoBehaviour
+public class VehicleStats : ScriptableObject
 {
     [Header("기본성능")]
     [Tooltip("최고 속도 (km/h")]
@@ -19,6 +19,9 @@ public class VehicleStats : MonoBehaviour
     public float braking = 8f;
 
     //근데 이거 왜 복제본으로 하는거에요....?????????? 그냥 하면 되는거 아닌가오..? ㅠ
+    //>만약 복제본을 사용하지 않고 원본 객체를 직접 수정하면, 손상 계산이   적되어 예상치 못한 결과가 발생할 수 있고,
+    //여러 차량이 같은 스크립터블 오브젝트를 참조할 경우 한 차량의 손상이 다른 차량에도 영향을 미칠 수 있습니다.
+
     public VehicleStats GetModifiedStats(float bodyDamage, float engineDamage, float wheelDamage, float mirrorDamage)
     {
         VehicleStats modifiedStats = Instantiate(this);

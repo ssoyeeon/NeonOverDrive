@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public GameState CurrentGameState { get; private set; }
 
-    public PlayerData PlayerData { get; private set; }
+    public PlayerData playerData;
     
     public int money;       //ÃÑ ³» µ·
     public bool isEnd;      //³¡³µ´ÂÁö
@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
-        //LoadPlayerData();
     }
     public void ChangeGameState(GameState newState)
     {

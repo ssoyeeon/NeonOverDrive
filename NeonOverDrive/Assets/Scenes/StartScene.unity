@@ -384,6 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 863149560}
   - component: {fileID: 863149559}
+  - component: {fileID: 863149561}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -403,8 +404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c97e227c445634a842e9be3415197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 863149561}
   money: 0
   isEnd: 0
+  reward: 0
 --- !u!4 &863149560
 Transform:
   m_ObjectHideFlags: 0
@@ -420,6 +423,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863149561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863149558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba156a9e8b107f4cb85eca971be7540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: 0
+  currentVehicleId: 0
+  vehicles:
+  - vehicleId: 0
+    bodyId: 0
+    engineId: 0
+    wheelId: 0
+    mirrorId: 0
+    bodyDamage: 0
+    engineDamage: 0
+    wheelDamage: 0
+    mirrorDamage: 0
+    paintColor: {r: 1, g: 0, b: 0, a: 1}
+    paintPatterenId: 0
+  ownedParts: 
 --- !u!1 &1310695069
 GameObject:
   m_ObjectHideFlags: 0

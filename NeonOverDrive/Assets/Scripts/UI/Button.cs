@@ -18,4 +18,8 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene("MapScene");
     }
+    public void GarageButton()
+    {
+        SceneManager.LoadScene("GarageScene");
+    }
 }

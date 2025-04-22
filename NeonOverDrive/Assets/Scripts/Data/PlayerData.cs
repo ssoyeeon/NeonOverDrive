@@ -10,6 +10,7 @@ public class PlayerData : MonoBehaviour
     public int currentVehicleId = 0;
     public List<PlayerVehicleData> vehicles = new List<PlayerVehicleData>();
     public List<int> ownedParts = new List<int>();
+    
 
     public PlayerData()
     {

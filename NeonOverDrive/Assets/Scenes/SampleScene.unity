@@ -1672,7 +1672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13449773, y: -0.000000019062524, z: 0.0000000025873759, w: 0.9909139}
+  m_LocalRotation: {x: 0.13449773, y: 0.000000019062522, z: -0.0000000025873756, w: 0.9909139}
   m_LocalPosition: {x: -37.96393, y: 3.055, z: -123.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8857,7 +8857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicleData: {fileID: 11400000, guid: 8497b4bdacac3d7459b891f4c34a2761, type: 2}
-  kart: {fileID: 0}
+  kart: {fileID: 1401561991}
   minCollisionForce: 5
   maxCollisionForce: 50
   frontAngle: 45
@@ -9631,12 +9631,12 @@ PrefabInstance:
     - target: {fileID: 5137196700854370943, guid: 15b77163057082546a80281c06e7fa54,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019062524
+      value: 0.000000019062522
       objectReference: {fileID: 0}
     - target: {fileID: 5137196700854370943, guid: 15b77163057082546a80281c06e7fa54,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000025873759
+      value: -0.0000000025873756
       objectReference: {fileID: 0}
     - target: {fileID: 5137196700854370943, guid: 15b77163057082546a80281c06e7fa54,
         type: 3}

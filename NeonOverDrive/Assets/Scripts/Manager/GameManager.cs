@@ -8,10 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => _instance;
 
     public GameState CurrentGameState { get; private set; }
-
     
-    public int money;       //ÃÑ ³» µ·
-    public bool isEnd;      //³¡³µ´ÂÁö
+    public int money;              //ÃÑ ³» µ·
+    public bool isEnd;             //³¡³µ´ÂÁö
     public int reward = 200;      //º¸»ó
 
     private void Awake()
@@ -35,19 +34,6 @@ public class GameManager : MonoBehaviour
     public void GoToStageSelect()
     {
         ChangeGameState(GameState.StageSelect);
-    }
-    void Start()
-    {
-        isEnd = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(isEnd == true)
-        {
-            money += reward;
-        }
     }
 
     public enum GameState

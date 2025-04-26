@@ -10,8 +10,8 @@ public class Trigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("OutScene");
             manager.isEnd = true;
+            SceneManager.LoadScene("OutScene");
         }
     }
 }

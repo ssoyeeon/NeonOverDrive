@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     public int money;       //ÃÑ ³» µ·
     public bool isEnd;      //³¡³µ´ÂÁö
-    public int reward;      //º¸»ó
+    public int reward = 200;      //º¸»ó
 
     private void Awake()
     {

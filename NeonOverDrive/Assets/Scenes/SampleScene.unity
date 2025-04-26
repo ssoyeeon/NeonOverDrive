@@ -1672,7 +1672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13449773, y: -0.000000019062524, z: 0.0000000025873759, w: 0.9909139}
+  m_LocalRotation: {x: 0.13449773, y: 0.000000019062522, z: -0.0000000025873756, w: 0.9909139}
   m_LocalPosition: {x: -37.96393, y: 3.055, z: -123.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3573,7 +3573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c97e227c445634a842e9be3415197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 682263670}
   money: 0
   isEnd: 0
   reward: 0
@@ -3604,21 +3603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba156a9e8b107f4cb85eca971be7540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currency: 0
-  currentVehicleId: 0
-  vehicles:
-  - vehicleId: 0
-    bodyId: 0
-    engineId: 0
-    wheelId: 0
-    mirrorId: 0
-    bodyDamage: 0
-    engineDamage: 0
-    wheelDamage: 0
-    mirrorDamage: 0
-    paintColor: {r: 1, g: 0, b: 0, a: 1}
-    paintPatterenId: 0
-  ownedParts: 
 --- !u!4 &687494953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4290fe0579b63f4429763c6c6d2f242d,
@@ -6757,10 +6741,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5223821195562650278, guid: fef51534630616b4db5fda177f79708c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1837591727}
-    - targetCorrespondingSourceObject: {fileID: 5223821195562650278, guid: fef51534630616b4db5fda177f79708c,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1837591731}
   m_SourcePrefab: {fileID: 100100000, guid: fef51534630616b4db5fda177f79708c, type: 3}
 --- !u!114 &1401561991 stripped
@@ -8985,24 +8965,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1401561990}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1837591727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837591725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3306a87f33e76de49bfa818c7ca1e152, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minCollisitionForce: 5
-  maxCollisitionForce: 50
-  damageMultiplier: 1
-  frontAngle: 45
-  rearAngle: 45
-  showDebugLogs: 1
 --- !u!114 &1837591731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9015,28 +8977,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff835526f9b39d42ba6252e5cd4af42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicleData:
-    vehicleId: 0
-    bodyId: 0
-    engineId: 0
-    wheelId: 0
-    mirrorId: 0
-    bodyDamage: 0
-    engineDamage: 0
-    wheelDamage: 0
-    mirrorDamage: 0
-    paintColor: {r: 1, g: 0, b: 0, a: 1}
-    paintPatterenId: 0
-  bodyModelParent: {fileID: 0}
-  engineMadeParent: {fileID: 0}
-  wheelModelParents: []
-  mirrorModelParents: []
-  bodyDamageEffects: []
-  engineDamageEffect: {fileID: 0}
-  wheelDamageEffect: {fileID: 0}
-  mirrorDamageEffect: {fileID: 0}
+  vehicleData: {fileID: 11400000, guid: 8497b4bdacac3d7459b891f4c34a2761, type: 2}
   kart: {fileID: 0}
-  baseStats: {fileID: 11400000, guid: 2c265f6bc0944af4c87f3b65e371cd63, type: 2}
+  minCollisionForce: 5
+  maxCollisionForce: 50
+  frontAngle: 45
+  rearAngle: 45
+  bodyDamage: 0
+  engineDamage: 0
+  wheelDamage: 0
+  mirrorDamage: 0
+  maxBodyPenalty: 0.3
+  maxEnginePenalty: 0.5
+  maxWheelPenalty: 0.4
+  maxMirrorPenalty: 0.2
+  showDebugLogs: 1
 --- !u!1001 &1839259828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9797,12 +9752,12 @@ PrefabInstance:
     - target: {fileID: 5137196700854370943, guid: 15b77163057082546a80281c06e7fa54,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019062524
+      value: 0.000000019062522
       objectReference: {fileID: 0}
     - target: {fileID: 5137196700854370943, guid: 15b77163057082546a80281c06e7fa54,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000025873759
+      value: -0.0000000025873756
       objectReference: {fileID: 0}
     - target: {fileID: 5137196700854370943, guid: 15b77163057082546a80281c06e7fa54,
         type: 3}

@@ -577,7 +577,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: fbe822bfc107e394dbebfd645d6abdd9, type: 2}
+      - m_Target: {fileID: 1193024259}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -687,13 +687,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
         type: 3}
+      propertyPath: CenterOfMass
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: RearLeftWheel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: FrontLeftWheel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: RearRightWheel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: FrontRightWheel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
       propertyPath: baseStats.TopSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: m_VisualWheels.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: m_VisualWheels.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: m_VisualWheels.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650275, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: m_VisualWheels.Array.data[3]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5223821195562650278, guid: fef51534630616b4db5fda177f79708c,
         type: 3}
       propertyPath: m_Name
       value: NewKartClassic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: rearLeftWheel.wheelCollider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: frontLeftWheel.wheelCollider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: rearLeftWheel.wheelTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: rearRightWheel.wheelCollider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: frontLeftWheel.wheelTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: frontRightWheel.wheelCollider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: rearRightWheel.wheelTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223821195562650279, guid: fef51534630616b4db5fda177f79708c,
+        type: 3}
+      propertyPath: frontRightWheel.wheelTransform
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8495624265479482455, guid: fef51534630616b4db5fda177f79708c,
         type: 3}
@@ -707,14 +792,6 @@ PrefabInstance:
     - {fileID: 5223821195133538619, guid: fef51534630616b4db5fda177f79708c, type: 3}
     - {fileID: 794521504826271541, guid: fef51534630616b4db5fda177f79708c, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 125354261834006067, guid: fef51534630616b4db5fda177f79708c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1184394805}
-    - targetCorrespondingSourceObject: {fileID: 125354261834006067, guid: fef51534630616b4db5fda177f79708c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1240149766}
     - targetCorrespondingSourceObject: {fileID: 125354261834006067, guid: fef51534630616b4db5fda177f79708c,
         type: 3}
       insertIndex: -1
@@ -915,7 +992,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 32014f6f23c55064183ba4d3fae39e8a, type: 2}
+      - m_Target: {fileID: 1193024259}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -1089,7 +1166,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 302643113}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1071991078959207046, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
@@ -1139,7 +1216,7 @@ PrefabInstance:
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
@@ -1149,7 +1226,7 @@ PrefabInstance:
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
@@ -1188,12 +1265,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a8f57edf3523624eb9f886833e8e97a, type: 3}
---- !u!4 &1184394805 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1184394804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193024259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1315,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 302643113}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1071991078959207046, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
@@ -1294,7 +1365,7 @@ PrefabInstance:
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
@@ -1304,7 +1375,7 @@ PrefabInstance:
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
         type: 3}
@@ -1343,12 +1414,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a8f57edf3523624eb9f886833e8e97a, type: 3}
---- !u!4 &1240149766 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2806714669947893885, guid: 8a8f57edf3523624eb9f886833e8e97a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1240149765}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1290292198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,7 +1946,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 2c265f6bc0944af4c87f3b65e371cd63, type: 2}
+      - m_Target: {fileID: 1193024259}
         m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
         m_MethodName: 
         m_Mode: 1
@@ -1937,6 +2002,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1333057678}
   - {fileID: 310972582}
+  - {fileID: 1184394804}
+  - {fileID: 1240149765}
   - {fileID: 302643112}
   - {fileID: 1290292200}
   - {fileID: 729898047}

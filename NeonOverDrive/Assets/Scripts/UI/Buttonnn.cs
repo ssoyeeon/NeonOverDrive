@@ -8,7 +8,7 @@ public class Buttonnn : MonoBehaviour
 {
     public GameObject blackCanvas;
     public GameObject backCanvas;
-    public void StartButton()
+    public void SampleSceneButton()
     {
         SceneManager.LoadScene("SampleScene");
     }
@@ -24,6 +24,10 @@ public class Buttonnn : MonoBehaviour
     {
         SceneManager.LoadScene("GarageScene");
     }
+    public void StartSceneButton()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
     public void BlackCar()
     {
         Camera camera = FindObjectOfType<Camera>();
@@ -31,7 +35,21 @@ public class Buttonnn : MonoBehaviour
         blackCanvas.SetActive(false);
         backCanvas.SetActive(true);
     }
-    public void Tada()
+    public void TadaRedCar()
+    {
+        Camera camera = FindObjectOfType<Camera>();
+        camera.transform.position = new Vector3(4f, 0.7f, -3f);
+        blackCanvas.SetActive(true);
+        backCanvas.SetActive(false);
+    }
+    public void TadaBlueCar()
+    {
+        Camera camera = FindObjectOfType<Camera>();
+        camera.transform.position = new Vector3(49.5f, 0.45f, -1.51f);
+        blackCanvas.SetActive(true);
+        backCanvas.SetActive(false);
+    }
+    public void TadaWhiteCar()
     {
         Camera camera = FindObjectOfType<Camera>();
         camera.transform.position = new Vector3(4f, 0.7f, -3f);

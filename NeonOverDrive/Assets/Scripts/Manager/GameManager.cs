@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,20 @@ public class GameManager : MonoBehaviour
     public int money;              //ÃÑ ³» µ·
     public bool isEnd;             //³¡³µ´ÂÁö
     public int reward = 200;      //º¸»ó
+    public float gameTimer;
 
+    public void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            gameTimer += Time.deltaTime; 
+            if (SceneManager.GetActiveScene().name != "OutScene" && SceneManager.GetActiveScene().name != "SampleScene")
+            {
+                gameTimer = 0;
+            }
+        }
+        
+    }
     private void Awake()
     {
         if(_instance == null)

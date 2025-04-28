@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class OutReward : MonoBehaviour
 {
-    public TMP_Text moneyTextt;
+    public TMP_Text moneyText;
+    public TMP_Text timeText;
     // Update is called once per frame
     void Update()
     {
-        moneyTextt.text = GameManager.Instance.reward.ToString();
+        //moneyText.text = GameManager.Instance.reward.ToString();
+        timeText.text = GameManager.Instance.gameTimer.ToString();
     }
 }

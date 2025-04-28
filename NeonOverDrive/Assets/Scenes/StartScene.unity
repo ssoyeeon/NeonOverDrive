@@ -480,9 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c97e227c445634a842e9be3415197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 100
   isEnd: 0
-  reward: 0
+  reward: 200
 --- !u!4 &863149560
 Transform:
   m_ObjectHideFlags: 0

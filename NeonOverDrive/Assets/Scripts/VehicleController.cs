@@ -1,5 +1,6 @@
 using KartGame.KartSystems;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VehicleController : MonoBehaviour
 {
@@ -29,6 +30,15 @@ public class VehicleController : MonoBehaviour
 
     [Header("디버그")]
     public bool showDebugLogs = true;     // 디버그 로그 표시 여부
+
+    [Header("UI 충돌 이미지")]
+    public Image front;
+    public Image body;
+    public Image back;
+    public Image leftBackWheel;
+    public Image leftFrontWheel;
+    public Image rightBackWheel;
+    public Image rightFrontWheel;
 
     private Rigidbody rb;
 
@@ -70,7 +80,7 @@ public class VehicleController : MonoBehaviour
 
         // 충돌 힘 계산
         float collisionForce = Mathf.Min(collision.relativeVelocity.magnitude, maxCollisionForce);
-        float damagePercent = (collisionForce - minCollisionForce) / (maxCollisionForce - minCollisionForce) * 60f; // 최대 60% 손상
+        float damagePercent = (collisionForce - minCollisionForce) / (maxCollisionForce - minCollisionForce) * 70f; // 최대 60% 손상
 
         string impactArea = "기타";
 
@@ -80,11 +90,27 @@ public class VehicleController : MonoBehaviour
             engineDamage = Mathf.Min(engineDamage + damagePercent * 0.7f, 100f);
             bodyDamage = Mathf.Min(bodyDamage + damagePercent * 0.3f, 100f);
             impactArea = "전방";
+            if(damagePercent > 30 && front.color != Color.red)
+            {
+                front.color = Color.yellow;
+            }
+            if (damagePercent > 60 && front.color == Color.yellow)
+            {
+                front.color = Color.red;
+            }
         }
         else if (absAngle > 180 - rearAngle) // 후방 충돌
         {
             bodyDamage = Mathf.Min(bodyDamage + damagePercent, 100f);
             impactArea = "후방";
+            if (damagePercent > 30 && back.color != Color.red)
+            {
+                back.color = Color.yellow;
+            }
+            if (damagePercent > 60 && back.color == Color.yellow)
+            {
+                back.color = Color.red;
+            }
         }
         else // 측면 충돌
         {
@@ -94,9 +120,35 @@ public class VehicleController : MonoBehaviour
 
             // 왼쪽/오른쪽 구분
             if (localImpact.x < 0)
+            {
                 impactArea = "왼쪽";
+                if (damagePercent > 30 && leftBackWheel.color != Color.red)
+                {
+                    body.color = Color.yellow;
+                    leftBackWheel.color = Color.yellow;
+                    leftFrontWheel.color = Color.yellow;
+                }
+                if (damagePercent > 60 && leftBackWheel.color == Color.yellow)
+                {
+                    body.color = Color.red;
+                    leftBackWheel.color = Color.red;
+                    leftFrontWheel.color = Color.red;
+                }
+            }
             else
+            {
                 impactArea = "오른쪽";
+                if (damagePercent > 30 && rightBackWheel.color != Color.red)
+                {
+                    rightBackWheel.color = Color.yellow;
+                    rightFrontWheel.color = Color.yellow;
+                }
+                if (damagePercent > 60 && leftBackWheel.color == Color.yellow)
+                {
+                    leftBackWheel.color = Color.red;
+                    leftFrontWheel.color = Color.red;
+                }
+            }
         }
 
         // 디버그 정보 로그

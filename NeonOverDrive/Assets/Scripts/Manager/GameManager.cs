@@ -20,12 +20,13 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "SampleScene")
         {
             gameTimer += Time.deltaTime; 
-            if (SceneManager.GetActiveScene().name != "OutScene" && SceneManager.GetActiveScene().name != "SampleScene")
-            {
-                gameTimer = 0;
-            }
+            
         }
-        
+        if (SceneManager.GetActiveScene().name != "OutScene" && SceneManager.GetActiveScene().name != "SampleScene")
+        {
+            gameTimer = 0;
+        }
+
     }
     private void Awake()
     {

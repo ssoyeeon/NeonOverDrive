@@ -9,6 +9,7 @@ public class Trigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            GameManager.Instance.money += 200;
             SceneManager.LoadScene("OutScene");
         }
     }

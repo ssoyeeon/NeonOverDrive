@@ -46,14 +46,14 @@ public class Buttonnn : MonoBehaviour
     {
         Camera camera = FindObjectOfType<Camera>();
         camera.transform.position = new Vector3(49.5f, 0.45f, -1.51f);
-        blackCanvas.SetActive(true);
-        backCanvas.SetActive(false);
+        blackCanvas.SetActive(false);
+        backCanvas.SetActive(true);
     }
     public void TadaWhiteCar()
     {
         Camera camera = FindObjectOfType<Camera>();
-        camera.transform.position = new Vector3(4f, 0.7f, -3f);
-        blackCanvas.SetActive(true);
-        backCanvas.SetActive(false);
+        camera.transform.position = new Vector3(70.7f, 0.45f, -1.51f);
+        blackCanvas.SetActive(false);
+        backCanvas.SetActive(true);
     }
 }

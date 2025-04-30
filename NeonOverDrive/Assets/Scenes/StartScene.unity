@@ -483,6 +483,7 @@ MonoBehaviour:
   money: 100
   isEnd: 0
   reward: 200
+  gameTimer: 0
 --- !u!4 &863149560
 Transform:
   m_ObjectHideFlags: 0

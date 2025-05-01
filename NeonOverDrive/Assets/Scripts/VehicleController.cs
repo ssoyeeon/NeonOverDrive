@@ -10,7 +10,7 @@ public class VehicleController : MonoBehaviour
 
     [Header("충돌 설정")]
     public float minCollisionForce = 5f;    // 충돌로 간주할 최소 힘
-    public float maxCollisionForce = 50f;   // 최대 충돌 힘
+    public float maxCollisionForce = 70f;   // 최대 충돌 힘
 
     [Header("충돌 방향 각도")]
     public float frontAngle = 45f;        // 정면 간주 각도
@@ -23,10 +23,10 @@ public class VehicleController : MonoBehaviour
     public float mirrorDamage = 0f;       // 미러 손상
 
     [Header("손상 페널티 설정")]
-    public float maxBodyPenalty = 0.3f;   // 바디 손상 최대 페널티 (30%)
-    public float maxEnginePenalty = 0.5f; // 엔진 손상 최대 페널티 (50%)
-    public float maxWheelPenalty = 0.4f;  // 휠 손상 최대 페널티 (40%)
-    public float maxMirrorPenalty = 0.2f; // 미러 손상 최대 페널티 (20%)
+    public float maxBodyPenalty = 0.5f;   // 바디 손상 최대 페널티 (50%)
+    public float maxEnginePenalty = 0.7f; // 엔진 손상 최대 페널티 (70%)
+    public float maxWheelPenalty = 0.6f;  // 휠 손상 최대 페널티 (60%)
+    public float maxMirrorPenalty = 0.4f; // 미러 손상 최대 페널티 (40%)
 
     [Header("디버그")]
     public bool showDebugLogs = true;     // 디버그 로그 표시 여부
@@ -114,9 +114,9 @@ public class VehicleController : MonoBehaviour
         }
         else // 측면 충돌
         {
-            bodyDamage = Mathf.Min(bodyDamage + damagePercent * 0.4f, 100f);
-            wheelDamage = Mathf.Min(wheelDamage + damagePercent * 0.4f, 100f);
-            mirrorDamage = Mathf.Min(mirrorDamage + damagePercent * 0.2f, 100f);
+            bodyDamage = Mathf.Min(bodyDamage + damagePercent * 0.5f, 100f);
+            wheelDamage = Mathf.Min(wheelDamage + damagePercent * 0.5f, 100f);
+            mirrorDamage = Mathf.Min(mirrorDamage + damagePercent * 0.3f, 100f);
 
             // 왼쪽/오른쪽 구분
             if (localImpact.x < 0)

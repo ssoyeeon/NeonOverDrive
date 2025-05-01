@@ -83,16 +83,16 @@ namespace KartGame.KartSystems
         // 카트의 기본 스탯 설정
         public ArcadeKart.Stats baseStats = new ArcadeKart.Stats
         {
-            TopSpeed = 20f,
-            Acceleration = 5f,
+            TopSpeed = 15f,
+            Acceleration = 7f,
             AccelerationCurve = 4f,
             Braking = 10f,
             ReverseAcceleration = 5f,
             ReverseSpeed = 5f,
-            Steer = 5f,
+            Steer = 3f,
             CoastingDrag = 4f,
             Grip = .95f,
-            AddedGravity = 1f,
+            AddedGravity = 10f,
         };
 
         [Header("Vehicle Visual")]

@@ -17,7 +17,7 @@ namespace KartGame.KartSystems
             public float ElapsedTime;          // 경과 시간
             public float MaxTime;              // 최대 지속 시간
         }
-
+         
         // 카트의 모든 물리적 특성을 정의하는 구조체
         [System.Serializable]
         public struct Stats

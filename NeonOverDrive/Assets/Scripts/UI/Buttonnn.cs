@@ -8,9 +8,13 @@ public class Buttonnn : MonoBehaviour
 {
     public GameObject blackCanvas;
     public GameObject backCanvas;
+    public void Stage1SceneButton()
+    {
+        SceneManager.LoadScene("Stage1Scene");
+    }
     public void SampleSceneButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Stage2Scene");
     }
     public void ExitButton()
     {

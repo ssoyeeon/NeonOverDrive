@@ -15,6 +15,7 @@ public class Buttonnn : MonoBehaviour
     public void SampleSceneButton()
     {
         SceneManager.LoadScene("Stage2Scene");
+
     }
     public void ExitButton()
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleName: CarWhite
   vehicleId: 2
-  baseSpeed: 25
+  baseSpeed: 10
   baseAcceleration: 7
   baseHandling: 5
   baseBraking: 7

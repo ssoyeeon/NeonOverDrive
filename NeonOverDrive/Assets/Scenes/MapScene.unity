@@ -1649,7 +1649,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 775525866}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.5441829
+  m_Size: 0.54418755
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1705,7 +1705,7 @@ GameObject:
   - component: {fileID: 1293278349}
   - component: {fileID: 1293278348}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,7 +1728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -832.7, y: 473.2}
+  m_AnchoredPosition: {x: -800, y: 460}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293278348
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 893cb3e85e07e0d45b1c1d419abcb18f, type: 2}
 --- !u!4 &1817151837
 Transform:
   m_ObjectHideFlags: 0
@@ -2776,7 +2776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -960, y: 475}
+  m_AnchoredPosition: {x: -959.99994, y: 475}
   m_SizeDelta: {x: 3745.8828, y: 1093.5}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1877012719
@@ -3144,7 +3144,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1333057677}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

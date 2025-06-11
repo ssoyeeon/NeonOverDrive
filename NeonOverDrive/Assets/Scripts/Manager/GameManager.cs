@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
             gameTimer += Time.deltaTime; 
             
         }
-        if (SceneManager.GetActiveScene().name != "OutScene" && SceneManager.GetActiveScene().name != "SampleScene")
+        if (SceneManager.GetActiveScene().name == "MapScene")
         {
             gameTimer = 0;
         }

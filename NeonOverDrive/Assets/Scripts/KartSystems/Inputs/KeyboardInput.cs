@@ -54,7 +54,7 @@ namespace KartGame.KartSystems
                     modifiers = new ArcadeKart.Stats
                     {
                         TopSpeed = 40f,
-                        Acceleration = 15f,
+                        Acceleration = 150f,
                         Grip = 1f
                     }
                 };

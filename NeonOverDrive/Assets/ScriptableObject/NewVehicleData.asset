@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleName: CarRed
   vehicleId: 0
-  baseSpeed: 10
-  baseAcceleration: 5
+  baseSpeed: 15
+  baseAcceleration: 400
   baseHandling: 7
-  baseBraking: 10
+  baseBraking: 300
   bodyLevel: 1
   engineLevel: 1
   wheelLevel: 1

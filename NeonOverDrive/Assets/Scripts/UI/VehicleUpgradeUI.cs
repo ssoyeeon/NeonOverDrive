@@ -57,15 +57,15 @@ public class VehicleUpgradeUI : MonoBehaviour
 
         VehicleData data = vehicleController.vehicleData;
 
-        statsText.text = $"차량: {data.vehicleName} (ID: {data.vehicleId})\n" +
-                         $"속도: {data.GetFinalSpeed():F1}\n" +
-                         $"가속: {data.GetFinalAcceleration():F1}\n" +
-                         $"핸들링: {data.GetFinalHandling():F1}\n" +
-                         $"제동: {data.GetFinalBraking():F1}\n\n" +
-                         $"부품 레벨:\n" +
-                         $"바디: {data.bodyLevel}\n" +
-                         $"엔진: {data.engineLevel}\n" +
-                         $"휠: {data.wheelLevel}\n" +
-                         $"미러: {data.mirrorLevel}";
+        statsText.text = $"Car: {data.vehicleName} (ID: {data.vehicleId})\n" +
+                         $"Speed: {data.GetFinalSpeed():F1}\n" +
+                         $"Acceleration: {data.GetFinalAcceleration():F1}\n" +
+                         $"Handling: {data.GetFinalHandling():F1}\n" +
+                         $"Breaking: {data.GetFinalBraking():F1}\n\n" +
+                         $"Part Levels:\n" +
+                         $"Body: {data.bodyLevel}\n" +
+                         $"Engine: {data.engineLevel}\n" +
+                         $"Wheel: {data.wheelLevel}\n" +
+                         $"Mirror: {data.mirrorLevel}";
     }
 }

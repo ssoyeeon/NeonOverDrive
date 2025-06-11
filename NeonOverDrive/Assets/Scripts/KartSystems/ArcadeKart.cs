@@ -468,7 +468,7 @@ namespace KartGame.KartSystems
             float accelInput = (accelerate ? 1.0f : 0.0f) - (brake ? 1.0f : 0.0f);
 
             // 수동 가속 곡선 계수
-            float accelerationCurveCoeff = 5;
+            float accelerationCurveCoeff = 0.1f;
             Vector3 localVel = transform.InverseTransformVector(Rigidbody.velocity);
 
             // 가속 및 속도 방향 확인

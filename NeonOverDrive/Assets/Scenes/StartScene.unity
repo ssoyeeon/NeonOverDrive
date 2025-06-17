@@ -664,10 +664,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c97e227c445634a842e9be3415197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100
+  money: 1000
   isEnd: 0
   reward: 200
   gameTimer: 0
+  currentBodyDamage: 0
+  currentEngineDamage: 0
+  currentWheelDamage: 0
+  currentMirrorDamage: 0
   playerCurrency: 1000
   selectedVehicleId: 1
 --- !u!4 &863149560

@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
         public int mirrorLevel = 1;
     }
 
+    public float currentBodyDamage = 0f;
+    public float currentEngineDamage = 0f;
+    public float currentWheelDamage = 0f;
+    public float currentMirrorDamage = 0f;
+
+
     public int playerCurrency = 1000;
     public int selectedVehicleId = 1;
     public List<SavedVehicleData> playerVehicles = new List<SavedVehicleData> ();
@@ -33,11 +39,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (_instance == null)
+        {
             _instance = this;
-        else
+            DontDestroyOnLoad(gameObject);           
+        }
+        else if (_instance != this)
+        {           
             Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
-
+        }
     }
 
     private void LoadGameData()
@@ -206,5 +215,45 @@ public class GameManager : MonoBehaviour
         Racing,
         StageComplete,
         GameOver
+    }
+
+    // 데미지 정보를 가져오는 메서드 추가
+    public VehicleDamageInfo GetCurrentVehicleDamage()
+    {
+        return new VehicleDamageInfo
+        {
+            bodyDamage = currentBodyDamage,
+            engineDamage = currentEngineDamage,
+            wheelDamage = currentWheelDamage,
+            mirrorDamage = currentMirrorDamage
+        };
+    }
+
+    // 게임 시작 시 차량 데미지 초기화
+    public void ResetVehicleDamage()
+    {
+        if (activeVehicleController != null)
+        {
+            activeVehicleController.ResetDamage();
+        }
+    }
+
+    public void UpdateVehicleDamage(float body, float engine, float wheel, float mirror)
+    {
+        currentBodyDamage = body;
+        currentEngineDamage = engine;
+        currentWheelDamage = wheel;
+        currentMirrorDamage = mirror;
+    }
+
+
+    // 데미지 정보를 담는 구조체 추가
+    [System.Serializable]
+    public struct VehicleDamageInfo
+    {
+        public float bodyDamage;
+        public float engineDamage;
+        public float wheelDamage;
+        public float mirrorDamage;
     }
 }

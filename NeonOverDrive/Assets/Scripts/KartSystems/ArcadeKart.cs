@@ -187,6 +187,8 @@ namespace KartGame.KartSystems
         bool m_HasCollision;                                              // 충돌 발생 여부
         bool m_InAir = false;                                             // 공중에 있는지 여부
 
+        private float m_CurrentAccelInput = 0f;
+
         // 파워업 추가 메서드
         public void AddPowerup(StatPowerup statPowerup) => m_ActivePowerupList.Add(statPowerup);
 
@@ -462,37 +464,38 @@ namespace KartGame.KartSystems
         }
 
         // 차량 이동 및 드리프트 처리
+        // 차량 이동 및 드리프트 처리 - 선형 가속 버전
         void MoveVehicle(bool accelerate, bool brake, float turnInput)
         {
             // 가속 입력 계산 (가속 - 제동)
             float accelInput = (accelerate ? 1.0f : 0.0f) - (brake ? 1.0f : 0.0f);
 
-            // 수동 가속 곡선 계수
-            float accelerationCurveCoeff = 0.1f;
             Vector3 localVel = transform.InverseTransformVector(Rigidbody.velocity);
 
             // 가속 및 속도 방향 확인
             bool accelDirectionIsFwd = accelInput >= 0;
-            bool localVelDirectionIsFwd = localVel.z >= 0;
+            bool localVelDirectionIsFwd = localVel.z > 0.5f; // 0에서 0.5f로 변경하여 저속에서 즉시 방향 전환
 
             // 현재 이동 방향에 따른 최대 속도 및 가속도 설정
             float maxSpeed = localVelDirectionIsFwd ? m_FinalStats.TopSpeed : m_FinalStats.ReverseSpeed;
             float accelPower = accelDirectionIsFwd ? m_FinalStats.Acceleration : m_FinalStats.ReverseAcceleration;
 
-            // 현재 속도와 관련된 가속 곡선 계산
+            // 현재 속도
             float currentSpeed = Rigidbody.velocity.magnitude;
-            float accelRampT = currentSpeed / maxSpeed;
-            float multipliedAccelerationCurve = m_FinalStats.AccelerationCurve * accelerationCurveCoeff;
-            float accelRamp = Mathf.Lerp(multipliedAccelerationCurve, 1, accelRampT * accelRampT);
 
             // 제동 중인지 확인
             bool isBraking = (localVelDirectionIsFwd && brake) || (!localVelDirectionIsFwd && accelerate);
+            // 저속일 때는 제동 무시하고 즉시 방향 전환
+            if (currentSpeed < 2f) // 2km/h 이하에서는 즉시 방향 전환
+            {
+                isBraking = false;
+            }
 
             // 제동 중이면 제동 가속도 사용, 아니면 일반 가속도 사용
             float finalAccelPower = isBraking ? m_FinalStats.Braking : accelPower;
 
-            // 최종 가속도 계산
-            float finalAcceleration = finalAccelPower * accelRamp;
+            // 선형 가속 - 곡선 계산 제거, 그냥 고정 가속도 사용
+            float finalAcceleration = finalAccelPower * 0.15f; // 가속도를 15%로 줄여서 더 부드럽게
 
             // 회전력 계산 (드리프트 중이면 드리프트 회전력, 아니면 조향 입력)
             float turningPower = IsDrifting ? m_DriftTurningPower : turnInput * m_FinalStats.Steer;
@@ -524,7 +527,7 @@ namespace KartGame.KartSystems
             // 가속 버튼을 누르지 않을 때 감속 (관성 드래그)
             if (Mathf.Abs(accelInput) < k_NullInput && GroundPercent > 0.0f)
             {
-                newVelocity = Vector3.MoveTowards(newVelocity, new Vector3(0, Rigidbody.velocity.y, 0), Time.fixedDeltaTime * m_FinalStats.CoastingDrag);
+                newVelocity = Vector3.MoveTowards(newVelocity, new Vector3(0, Rigidbody.velocity.y, 0), Time.fixedDeltaTime * m_FinalStats.CoastingDrag );
             }
 
             // 최종 속도 적용
@@ -632,11 +635,11 @@ namespace KartGame.KartSystems
             bool validPosition = false;
 
             // 레이캐스트로 지면 확인
-            if (Physics.Raycast(transform.position + (transform.up * 0.1f), -transform.up, out RaycastHit hit, 3.0f, 1 << 9 | 1 << 10 | 1 << 11)) // 레이어: 지면(9) / 환경(10) / 트랙(11)
+            if (Physics.Raycast(transform.position + (transform.up * 0.1f), -transform.up, out RaycastHit hit, 3.0f, 1 << 9 | 1 << 10 | 1 << 11))
             {
                 // 충돌 노멀과 지면 노멀 중 더 위쪽을 향하는 것을 기준으로 수직 참조 벡터 보간
                 Vector3 lerpVector = (m_HasCollision && m_LastCollisionNormal.y > hit.normal.y) ? m_LastCollisionNormal : hit.normal;
-                m_VerticalReference = Vector3.Slerp(m_VerticalReference, lerpVector, Mathf.Clamp01(AirborneReorientationCoefficient * Time.fixedDeltaTime * (GroundPercent > 0.0f ? 10.0f : 1.0f)));  // 지면에 있으면 더 빠르게 보간
+                m_VerticalReference = Vector3.Slerp(m_VerticalReference, lerpVector, Mathf.Clamp01(AirborneReorientationCoefficient * Time.fixedDeltaTime * (GroundPercent > 0.0f ? 10.0f : 1.0f)));
             }
             else
             {

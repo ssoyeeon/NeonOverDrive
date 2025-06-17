@@ -47,21 +47,42 @@ namespace KartGame.KartSystems
                 isBoosting = true;
                 currentBoostTime = 0f;
 
+                // VehicleController에서 현재 차량의 손상 상태 확인
+                VehicleController vehicleController = GetComponent<VehicleController>();
+                float damageMultiplier = 1f;
+
+                if (vehicleController != null)
+                {
+                    // 엔진 손상이 부스터 성능에 가장 큰 영향을 미침
+                    float engineDamagePercent = vehicleController.engineDamage / 100f;
+                    float bodyDamagePercent = vehicleController.bodyDamage / 100f;
+
+                    // 손상에 따른 부스터 성능 감소 (엔진 손상 40%, 차체 손상 20% 영향)
+                    damageMultiplier = 1f - (engineDamagePercent * 0.4f) - (bodyDamagePercent * 0.2f);
+                    damageMultiplier = Mathf.Clamp(damageMultiplier, 0.5f, 1f); // 최소 50%는 유지
+                }
+
                 var boostPowerup = new ArcadeKart.StatPowerup
                 {
                     PowerUpID = "Boost",
                     MaxTime = boostDuration,
                     modifiers = new ArcadeKart.Stats
                     {
-                        TopSpeed = 40f,
-                        Acceleration = 150f,
+                        TopSpeed = 40f * damageMultiplier,        // 손상에 따라 부스터 최대 속도 감소
+                        Acceleration = 150f * damageMultiplier,   // 손상에 따라 부스터 가속도 감소
                         Grip = 1f
                     }
                 };
 
                 kart.AddPowerup(boostPowerup);
-                // 부스트 시 순간적인 가속도 부여
-                rb.AddForce(transform.forward * boostForce);
+
+                // 부스터 시 순간적인 가속도 부여 (손상 반영)
+                rb.AddForce(transform.forward * (boostForce * damageMultiplier));
+
+                if (vehicleController != null && vehicleController.showDebugLogs)
+                {
+                    Debug.Log($"부스터 사용 - 손상 배율: {damageMultiplier:F2}");
+                }
             }
 
             if (isBoosting)
@@ -117,7 +138,7 @@ namespace KartGame.KartSystems
             {
                 isDrifting = false;
                 // 드리프트 종료 시 현재 속도 방향으로 가속
-                rb.AddForce(rb.velocity.normalized * 1000f);
+                //rb.AddForce(rb.velocity.normalized * 1000f);
             }
         }
 

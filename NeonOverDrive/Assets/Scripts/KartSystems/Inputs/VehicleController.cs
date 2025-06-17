@@ -44,7 +44,7 @@ public class VehicleController : MonoBehaviour
 
     void Start()
     {
-        // 카트 컴포넌트 할당
+        // 카트 컨트롤러 찾기
         if (kart == null)
             kart = GetComponent<ArcadeKart>();
 
@@ -56,6 +56,17 @@ public class VehicleController : MonoBehaviour
 
         // Rigidbody 참조
         rb = GetComponent<Rigidbody>();
+
+        // GameManager와 연동하여 업그레이드된 데이터 적용
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.InitializeGameScene(this);
+            Debug.Log("GameManager와 차량 연동 완료");
+        }
+        else
+        {
+            Debug.LogWarning("GameManager.Instance가 null입니다!");
+        }
     }
 
     // 충돌 감지
@@ -90,27 +101,19 @@ public class VehicleController : MonoBehaviour
             engineDamage = Mathf.Min(engineDamage + damagePercent * 0.7f, 100f);
             bodyDamage = Mathf.Min(bodyDamage + damagePercent * 0.3f, 100f);
             impactArea = "전방";
-            if(damagePercent > 30 && front.color != Color.red)
-            {
-                front.color = Color.yellow;
-            }
-            if (damagePercent > 60 && front.color == Color.yellow)
-            {
-                front.color = Color.red;
-            }
+
+            // 엔진 데미지 기준으로 전방 색상 설정
+            if (front != null)
+                front.color = GetUnifiedDamageColor(engineDamage);
         }
         else if (absAngle > 180 - rearAngle) // 후방 충돌
         {
             bodyDamage = Mathf.Min(bodyDamage + damagePercent, 100f);
             impactArea = "후방";
-            if (damagePercent > 30 && back.color != Color.red)
-            {
-                back.color = Color.yellow;
-            }
-            if (damagePercent > 60 && back.color == Color.yellow)
-            {
-                back.color = Color.red;
-            }
+
+            // 차체 데미지 기준으로 후방 색상 설정
+            if (back != null)
+                back.color = GetUnifiedDamageColor(bodyDamage);
         }
         else // 측면 충돌
         {
@@ -118,38 +121,29 @@ public class VehicleController : MonoBehaviour
             wheelDamage = Mathf.Min(wheelDamage + damagePercent * 0.5f, 100f);
             mirrorDamage = Mathf.Min(mirrorDamage + damagePercent * 0.3f, 100f);
 
-            // 왼쪽/오른쪽 구분
-            if (localImpact.x < 0)
+            // 왼쪽/오른쪽 구분하여 색상 적용
+            if (localImpact.x < 0) // 왼쪽
             {
                 impactArea = "왼쪽";
-                if (damagePercent > 30 && leftBackWheel.color != Color.red)
-                {
-                    body.color = Color.yellow;
-                    leftBackWheel.color = Color.yellow;
-                    leftFrontWheel.color = Color.yellow;
-                }
-                if (damagePercent > 60 && leftBackWheel.color == Color.yellow)
-                {
-                    body.color = Color.red;
-                    leftBackWheel.color = Color.red;
-                    leftFrontWheel.color = Color.red;
-                }
+                if (body != null)
+                    body.color = GetUnifiedDamageColor(bodyDamage);
+                if (leftBackWheel != null)
+                    leftBackWheel.color = GetUnifiedDamageColor(wheelDamage);
+                if (leftFrontWheel != null)
+                    leftFrontWheel.color = GetUnifiedDamageColor(wheelDamage);
             }
-            else
+            else // 오른쪽
             {
                 impactArea = "오른쪽";
-                if (damagePercent > 30 && rightBackWheel.color != Color.red)
-                {
-                    rightBackWheel.color = Color.yellow;
-                    rightFrontWheel.color = Color.yellow;
-                }
-                if (damagePercent > 60 && leftBackWheel.color == Color.yellow)
-                {
-                    leftBackWheel.color = Color.red;
-                    leftFrontWheel.color = Color.red;
-                }
+                if (body != null)
+                    body.color = GetUnifiedDamageColor(bodyDamage);
+                if (rightBackWheel != null)
+                    rightBackWheel.color = GetUnifiedDamageColor(wheelDamage);
+                if (rightFrontWheel != null)
+                    rightFrontWheel.color = GetUnifiedDamageColor(wheelDamage);
             }
         }
+
 
         // 디버그 정보 로그
         if (showDebugLogs)
@@ -164,7 +158,25 @@ public class VehicleController : MonoBehaviour
 
         // 성능 업데이트
         ApplyVehicleStats();
+
+        // GameManager로 현재 데미지 값들 전달
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateVehicleDamage(bodyDamage, engineDamage, wheelDamage, mirrorDamage);
+        }
     }
+
+    // VehicleController.cs에 이 메서드 추가:
+    private Color GetUnifiedDamageColor(float damagePercent)
+    {
+        if (damagePercent >= 60f)
+            return Color.red;
+        else if (damagePercent >= 30f)
+            return Color.yellow;
+        else
+            return Color.white;
+    }
+
 
     // 차량 능력치 적용
     public void ApplyVehicleStats()
@@ -189,6 +201,31 @@ public class VehicleController : MonoBehaviour
         kart.baseStats.Acceleration = baseAccel * (1f - enginePenalty);
         kart.baseStats.Steer = baseHandling * (1f - wheelPenalty) * (1f - mirrorPenalty);
         kart.baseStats.Braking = baseBraking * (1f - wheelPenalty);
+
+        // 손상 시 ArcadeKart의 부드러운 가속 입력값도 즉시 리셋
+        if (bodyDamage > 0 || engineDamage > 0 || wheelDamage > 0 || mirrorDamage > 0)
+        {
+            // ArcadeKart의 m_CurrentAccelInput을 리플렉션으로 접근하여 리셋
+            var field = kart.GetType().GetField("m_CurrentAccelInput",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (field != null)
+            {
+                field.SetValue(kart, 0f);
+            }
+
+            // Rigidbody 속도도 손상에 맞게 즉시 제한
+            if (kart.Rigidbody != null)
+            {
+                Vector3 currentVelocity = kart.Rigidbody.velocity;
+                float maxAllowedSpeed = kart.baseStats.TopSpeed;
+
+                if (currentVelocity.magnitude > maxAllowedSpeed)
+                {
+                    currentVelocity = currentVelocity.normalized * maxAllowedSpeed;
+                    kart.Rigidbody.velocity = currentVelocity;
+                }
+            }
+        }
 
         if (showDebugLogs)
         {

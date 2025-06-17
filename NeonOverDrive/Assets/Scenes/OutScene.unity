@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 401078232}
   - component: {fileID: 401078231}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: rightBackWheelImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 431920437}
   - component: {fileID: 431920436}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: bodyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,7 +1154,7 @@ GameObject:
   - component: {fileID: 635635434}
   - component: {fileID: 635635433}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: leftBackWheelImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1406,7 +1406,7 @@ GameObject:
   - component: {fileID: 835683716}
   - component: {fileID: 835683715}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: leftFrontWheelImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 1056905811}
   - component: {fileID: 1056905810}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: rightFrontWheelImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,6 +2023,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1523577465}
   timeText: {fileID: 653789391}
+  frontImage: {fileID: 1607807441}
+  bodyImage: {fileID: 431920436}
+  backImage: {fileID: 1656537326}
+  leftFrontWheelImage: {fileID: 835683715}
+  leftBackWheelImage: {fileID: 635635433}
+  rightFrontWheelImage: {fileID: 1056905810}
+  rightBackWheelImage: {fileID: 401078231}
 --- !u!4 &1334032590
 Transform:
   m_ObjectHideFlags: 0
@@ -2453,7 +2460,7 @@ GameObject:
   - component: {fileID: 1607807442}
   - component: {fileID: 1607807441}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: frontImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2528,7 +2535,7 @@ GameObject:
   - component: {fileID: 1656537327}
   - component: {fileID: 1656537326}
   m_Layer: 5
-  m_Name: Image
+  m_Name: backImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

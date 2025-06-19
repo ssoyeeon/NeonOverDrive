@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage1Scene.unity
     guid: 0ee0e38a90961b044841e6ef65cdd035
+  - enabled: 1
+    path: Assets/Scenes/Stage_city.unity
+    guid: 4da76efc9713fa744900a0f7b7e80a1e
+  - enabled: 1
+    path: Assets/Scenes/Stage_Hanok.unity
+    guid: abbaf41719ad9e448b6a367f9188398a
   m_configObjects: {}

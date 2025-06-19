@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Stage1Scene" || SceneManager.GetActiveScene().name == "Stage2Scene")
+        if(SceneManager.GetActiveScene().name == "Stage1Scene" || SceneManager.GetActiveScene().name == "Stage_city" || SceneManager.GetActiveScene().name == "Stage_Hanok")
         {
             gameTimer += Time.deltaTime; 
             
@@ -187,6 +187,10 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MapScene")
         {
             gameTimer = 0;
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("StartScene");
         }
 
     }

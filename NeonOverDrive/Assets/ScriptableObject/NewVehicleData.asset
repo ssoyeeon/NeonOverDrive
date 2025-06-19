@@ -16,7 +16,7 @@ MonoBehaviour:
   vehicleId: 0
   baseSpeed: 15
   baseAcceleration: 400
-  baseHandling: 7
+  baseHandling: 3
   baseBraking: 300
   bodyLevel: 1
   engineLevel: 1

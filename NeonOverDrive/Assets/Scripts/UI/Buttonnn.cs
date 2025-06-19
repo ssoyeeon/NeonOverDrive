@@ -10,11 +10,16 @@ public class Buttonnn : MonoBehaviour
     public GameObject backCanvas;
     public void Stage1SceneButton()
     {
-        SceneManager.LoadScene("Stage1Scene");
+        SceneManager.LoadScene("Stag1Scene");
     }
-    public void SampleSceneButton()
+    public void citySceneButton()
     {
-        SceneManager.LoadScene("Stage2Scene");
+        SceneManager.LoadScene("Stage_city");
+
+    }
+    public void HanokSceneButton()
+    {
+        SceneManager.LoadScene("Stage_Hanok");
 
     }
     public void ExitButton()
